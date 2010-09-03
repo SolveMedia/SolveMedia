@@ -2,7 +2,7 @@
 
 Author::		Eddie Siegel
 Info::			http://www.solvemedia.com
-Documentation::		http://portal.solvemedia.com/portal/help/pub/ruby
+Documentation::		http://portal.solvemedia.com/portal/help/pub
 
 == Installation
 
@@ -13,6 +13,10 @@ SolveMedia can be installed as a gem by adding the following line to your <tt>en
 And then running the following to install the gem:
 
   sudo rake gems:install
+
+Alternatively you can install SolveMedia as a plugin
+
+  script/plugin install git://github.com/SolveMedia/solvemedia.git
 
 == API Keys
 
