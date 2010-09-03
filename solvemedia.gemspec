@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
      "generators/solvemedia_config/templates/solvemedia_config.yml",
      "init.rb",
      "install.rb",
-     "lib/adcopy.rb",
+     "lib/solvemedia.rb",
      "lib/controller_methods.rb",
      "lib/view_methods.rb",
      "uninstall.rb"
