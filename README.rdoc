@@ -16,7 +16,7 @@ And then running the following to install the gem:
 
 Alternatively you can install SolveMedia as a plugin
 
-  script/plugin install git://github.com/SolveMedia/solvemedia.git
+  script/plugin install git://github.com/SolveMedia/SolveMedia.git
 
 == API Keys
 
