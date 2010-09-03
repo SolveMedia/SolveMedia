@@ -1,0 +1,5 @@
+Description:
+  Generates config/solvemedia_config.yml where your Solve Media API keys should be stored
+
+Usage:
+  script/generate solvemedia_config
