@@ -13,7 +13,8 @@ module SolveMedia
       SolveMedia::check_for_keys!
       options = { :tabindex => nil,
                   :theme    => 'purple',
-                  :lang     => 'en'
+                  :lang     => 'en',
+                  :size     => '300x150'
                   }.merge(options)
       
       output = ""
@@ -22,7 +23,8 @@ module SolveMedia
       output << "	var ACPuzzleOptions = {\n"
       output << %{			tabindex:   #{options[:tabindex]},\n} unless options[:tabindex].nil?
       output << %{			theme:	    '#{options[:theme]}',\n}
-      output << %{			lang:	    '#{options[:lang]}'\n}
+      output << %{			lang:	    '#{options[:lang]},'\n}
+      output << %{			size:	    '#{options[:size]}'\n}
       output << "	};\n"
       output << %{</script>\n}
       
