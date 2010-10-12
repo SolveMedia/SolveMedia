@@ -14,7 +14,8 @@ module SolveMedia
       options = { :tabindex => nil,
                   :theme    => 'purple',
                   :lang     => 'en',
-                  :size     => '300x150'
+                  :size     => '300x150',
+                  :config   => SolveMedia::CONFIG
                   }.merge(options)
       
       output = ""
@@ -29,11 +30,11 @@ module SolveMedia
       output << %{</script>\n}
       
       output << %{<script type="text/javascript"}
-      output << %{   src="#{SolveMedia::API_SERVER}/papi/challenge.script?k=#{SolveMedia::CONFIG['C_KEY']}">}
+      output << %{   src="#{SolveMedia::API_SERVER}/papi/challenge.script?k=#{options[:config][:c_key]}">}
       output << %{</script>}
 
       output << %{<noscript>}
-      output << %{   <iframe src="#{SolveMedia::API_SERVER}/papi/challenge.noscript?k=#{SolveMedia::CONFIG['C_KEY']}"}
+      output << %{   <iframe src="#{SolveMedia::API_SERVER}/papi/challenge.noscript?k=#{options[:config][:c_key]}"}
       output << %{	 height="300" width="500" frameborder="0"></iframe><br/>}
       output << %{   <textarea name="adcopy_challenge" rows="3" cols="40">}
       output << %{   </textarea>}
