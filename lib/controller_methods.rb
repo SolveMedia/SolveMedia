@@ -24,16 +24,16 @@ module SolveMedia
       response = nil
       Timeout::timeout(options[:timeout]) do
         response = Net::HTTP.post_form URI.parse("#{SolveMedia::VERIFY_SERVER}/papi/verify"), {
-          "privatekey"  =>  options[:config][:v_key],
+          "privatekey"  =>  options[:config]['V_KEY'],
           "challenge"   =>  params[:adcopy_challenge],
           "response"    =>  params[:adcopy_response],
-          "remoteip"    =>  request.remote_ip
+          "remoteip"    =>  (options[:remote_ip] || request.remote_ip)
         }
       end
       answer, error, authenticator = response.body.split("\n")
       
       #validate the response
-      if options[:validate_response] && authenticator != Digest::SHA1.hexdigest("#{answer}#{params[:adcopy_challenge]}#{options[:config][:h_key]}")
+      if options[:validate_response] && authenticator != Digest::SHA1.hexdigest("#{answer}#{params[:adcopy_challenge]}#{options[:config]['H_KEY']}")
         raise AdCopyError, "SolveMedia Error: Unable to Validate Response" 
       end
       
