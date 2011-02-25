@@ -7,7 +7,7 @@ module SolveMedia
   CONFIG = YAML.load_file(CONFIG_FILE) if File.exist?(CONFIG_FILE)
   VERIFY_SERVER = 'http://verify.solvemedia.com'
   API_SERVER = 'http://api.solvemedia.com'
-  API_SECURE_SERVER = 'http://api-secure.solvemedia.com'
+  API_SECURE_SERVER = 'https://api-secure.solvemedia.com'
   SIGNUP_URL = 'http://portal.solvemedia.com/portal/public/signup'
   
   class AdCopyError < StandardError
