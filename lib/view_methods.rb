@@ -19,7 +19,7 @@ module SolveMedia
                   :use_SSL  => false
                   }.merge(options)
       
-      if options[:useSSL]
+      if options[:use_SSL]
         server = SolveMedia::API_SECURE_SERVER
       else
         server = SolveMedia::API_SERVER
