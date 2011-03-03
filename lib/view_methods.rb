@@ -15,14 +15,21 @@ module SolveMedia
                   :theme    => 'purple',
                   :lang     => 'en',
                   :size     => '300x150',
-                  :config   => SolveMedia::CONFIG
+                  :config   => SolveMedia::CONFIG,
+                  :use_SSL  => false
                   }.merge(options)
+      
+      if options[:useSSL]
+        server = SolveMedia::API_SECURE_SERVER
+      else
+        server = SolveMedia::API_SERVER
+      end
       
       if options[:ajax]
         aopts = {:theme => options[:theme], :lang => options[:lang], :size => options[:size]}
         aopts[:tabindex] = options[:tabindex] if options[:tabindex]
 
-        output = javascript_include_tag("#{SolveMedia::API_SERVER}/papi/challenge.ajax")
+        output = javascript_include_tag("#{server}/papi/challenge.ajax")
         js = <<-EOF          
           function loadSolveMediaCaptcha(){
             if(window.ACPuzzle) { 
@@ -49,11 +56,11 @@ module SolveMedia
         output << %{</script>\n}
       
         output << %{<script type="text/javascript"}
-        output << %{   src="#{SolveMedia::API_SERVER}/papi/challenge.script?k=#{options[:config]['C_KEY']}">}
+        output << %{   src="#{server}/papi/challenge.script?k=#{options[:config]['C_KEY']}">}
         output << %{</script>}
 
         output << %{<noscript>}
-        output << %{   <iframe src="#{SolveMedia::API_SERVER}/papi/challenge.noscript?k=#{options[:config]['C_KEY']}"}
+        output << %{   <iframe src="#{server}/papi/challenge.noscript?k=#{options[:config]['C_KEY']}"}
         output << %{	 height="300" width="500" frameborder="0"></iframe><br/>}
         output << %{   <textarea name="adcopy_challenge" rows="3" cols="40">}
         output << %{   </textarea>}
