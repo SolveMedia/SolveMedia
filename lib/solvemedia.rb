@@ -3,7 +3,7 @@ require 'view_methods'
 require 'controller_methods'
 
 module SolveMedia
-  CONFIG_FILE = "#{RAILS_ROOT}/config/solvemedia_config.yml"
+  CONFIG_FILE = "#{Rails.root.to_s}/config/solvemedia_config.yml"
   CONFIG = YAML.load_file(CONFIG_FILE) if File.exist?(CONFIG_FILE)
   VERIFY_SERVER = 'http://verify.solvemedia.com'
   API_SERVER = 'http://api.solvemedia.com'
