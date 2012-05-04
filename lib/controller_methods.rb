@@ -1,4 +1,5 @@
 module SolveMedia
+require 'net/http'
   
   # Methods within this module will be included in ActionController::Base 
   module ControllerMethods
@@ -43,7 +44,7 @@ module SolveMedia
         #Add error to the model
         if options[:model]
           options[:model].valid?
-          options[:model].errors.add_to_base options[:error_message] || "Solve Media Puzzle: #{error}"
+          options[:model].errors.add(:base, options[:error_message] || "Solve Media Puzzle: #{error}")
         end
         
         return false
