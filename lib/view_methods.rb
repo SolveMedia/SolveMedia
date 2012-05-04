@@ -42,6 +42,7 @@ module SolveMedia
         EOF
 
         output << javascript_tag(js)
+        output = output.html_safe if output.respond_to?('html_safe')
         return output
       else
         output = ""
@@ -67,6 +68,7 @@ module SolveMedia
         output << %{   <input type="hidden" name="adcopy_response"}
         output << %{	 value="manual_challenge"/>}
         output << %{</noscript>}
+        output = output.html_safe if output.respond_to?('html_safe')
         return output
 
       end
